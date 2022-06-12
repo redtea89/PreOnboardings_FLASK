@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-configmap-volume
+data:
+  default: |
+    upstream myweb {
+    server myflask:8000;
+    }
+
+    server {
+        listen 80;
+
+        location / {
+            proxy_pass http://myweb;
+        }
+    }
