@@ -1,12 +1,18 @@
 from flask_restful import Resource
 
 
+class IndexView(Resource):
+    def get(self):
+        return {"message":"This is index page"}
+
+
 class AnalysisView(Resource):
     """
     [GET] 광고주 id와 기간으로 매체별 통계량 리턴
      - params = "advertiser_id", "start_date", "end_date"
     """
     def get(self):
+        a = 'hi'
         pass
 
 
@@ -16,6 +22,7 @@ class AdvertiserCLView(Resource):
     [POST] : 광고주 추가
     """
     def get(self):
+        a = 'hei'
         pass
 
     def post(self):

@@ -17,7 +17,13 @@ bear_router(api)
 human_router(api)
 
 """DB Connector"""
-PW = os.environ['MARIADB_ROOT_PASSWORD']
+try:
+    from local_settings import USER, HOST, PASSWORD
+except:
+    USER = os.environ['AZURE_MYSQL_USER']
+    HOST = os.environ['AZURE_MYSQL_HOST'],
+    PASSWORD = os.environ['AZURE_MYSQL_PASSWORD']
+
 engine = create_engine(
-    f"mariadb+pymysql://user:{PW}@localhost/pre_flask?charset=utf8mb4"
+    f"mariadb+pymysql://{USER}:{PASSWORD}@{HOST}/pre_flask?charset=utf8mb4"
 )
